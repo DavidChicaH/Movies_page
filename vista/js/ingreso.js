@@ -1,0 +1,3 @@
+function access(){
+    alert(":D")
+}
