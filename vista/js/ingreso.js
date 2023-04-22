@@ -1,3 +1,0 @@
-function access(){
-    alert(":D")
-}
