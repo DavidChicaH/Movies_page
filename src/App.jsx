@@ -4,11 +4,20 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Home, { homeLoader } from "./routes/Home";
+import Home from "./routes/Home";
+import MovieInfo from "./routes/MovieInfo";
+import Search from "./routes/Search";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Home />} loader={homeLoader}></Route>
+    <>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/movie/:id" element={<MovieInfo />}></Route>
+        <Route path="/search" element={<Search />}></Route>
+      </Route>
+    </>
   )
 );
 

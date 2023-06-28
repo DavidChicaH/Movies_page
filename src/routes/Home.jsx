@@ -1,34 +1,37 @@
-import { useLoaderData } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import { API_URL } from "../api/ApiData";
-import MovieCard from "../components/MovieCard";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import MoviesList from "../components/MoviesList";
 
-export const homeLoader = async () => {
-  const res = await fetch(API_URL);
-
-  const json = await res.json();
-
-  const movies = json.results;
-
-  return { movies };
-};
+const newMoviesURL = import.meta.env.VITE_NEW_MOVIES_API_URL;
 
 const Home = () => {
-  const { movies } = useLoaderData();
+  const [newMovies, setNewMovies] = useState([]);
+  // const [topMovies, setTopMovies] = useState([]);
+  const getNewMovies = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const movies = await data.results;
+
+    setNewMovies(movies);
+  };
+
+  // const getTopMovies = async () => {
+  //   const res = await fetch(`${moviesURL}/top_rated?${apiKey}`);
+  //   const data = await res.json();
+
+  //   const topRatedMovies = await data.results;
+
+  //   setTopMovies(topRatedMovies);
+  // };
+
+  useEffect(() => {
+    getNewMovies(newMoviesURL);
+  }, []);
 
   return (
     <>
-      <Navbar />
-      <main>
-        <motion.div layout className="popular-movies">
-          <AnimatePresence>
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-          </AnimatePresence>
-        </motion.div>
-      </main>
+      <h2 className="text-center font-semibold text-3xl my-4">Movies page</h2>
+      <MoviesList movies={newMovies} />
     </>
   );
 };

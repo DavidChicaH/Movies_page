@@ -1,3 +1,23 @@
-@import "styles/App.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "styles/Navbar.scss";
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+//Navbar classes
+
+.btn {
+  @apply text-white py-2.5 px-5 rounded-md transition duration-500 ease-out;
+}
+
+.signin-btn {
+  @apply hover:bg-white hover:text-blue-900 border border-white;
+}
+
+.signup-btn {
+  @apply bg-blue-500 border border-blue-500  hover:bg-blue-900 hover:border-blue-900 
+}
