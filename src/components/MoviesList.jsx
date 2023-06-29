@@ -7,7 +7,7 @@ const MoviesList = ({ movies }) => {
     <>
       <motion.div layout className="popular-movies">
         <AnimatePresence className="grid grid-cols-3">
-          <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 p-4">
             {movies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

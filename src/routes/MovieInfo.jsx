@@ -1,9 +1,4 @@
 import { useParams } from "react-router-dom";
-import {
-  BsWallet2,
-  BsHourglassSplit,
-  BsFillFileEarmarkTextFill,
-} from "react-icons/bs";
 import { useEffect, useState } from "react";
 
 const moviesURL = import.meta.env.VITE_API_URL;
@@ -17,16 +12,22 @@ const MovieInfo = () => {
     const res = await fetch(url);
     const data = await res.json();
 
-    setMovie(data);
-    console.log(data);
+    setMovie([data]);
+    // console.log(data);
   };
-
+  console.log(movie);
   useEffect(() => {
     const movieURL = `${moviesURL}/${id}?${apiKey}`;
     getMovie(movieURL);
-  }, []);
+  }, [id]);
 
-  return <div>aa</div>;
+  return (
+    <div>
+      {movie.map((mov) => (
+        <h1 key={mov.id}>{mov.title}</h1>
+      ))}
+    </div>
+  );
 };
 
 export default MovieInfo;

@@ -5,7 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["NexflixSans-Regular", "sans-serif"],
+    }
   },
   plugins: [],
 }
