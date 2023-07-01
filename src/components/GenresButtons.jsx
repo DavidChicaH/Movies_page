@@ -9,7 +9,7 @@ const GenresButtons = ({genres, handleSelectedGenres, selectedGenres}) => {
       <div
         key={genre.id}
         onClick={() => handleSelectedGenres(genre.id)}
-        className={`py-2.5 px-4 bg-blue-600 rounded-full m-1 inline-block cursor-pointer hover:bg-blue-700 ${
+        className={`py-2.5 px-4 bg-blue-600 rounded-md m-1 inline-block cursor-pointer hover:bg-blue-700 float-btn hover:float-btn-hover ${
           selectedGenres[genre.id] ? "text-red-500" : "text-black"
         }`}
       >

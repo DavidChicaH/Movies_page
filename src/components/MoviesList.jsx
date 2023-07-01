@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import MovieCard from "./MovieCard";
 
 const MoviesList = ({ movies }) => {
+  
   return (
     <>
       <motion.div layout className="popular-movies">

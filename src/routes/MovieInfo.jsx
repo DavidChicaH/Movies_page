@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import MovieBanner from "../components/MovieBanner";
+import CompaniesCards from "../components/CompaniesCards";
 
 const moviesURL = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY;
+const movieImageURL = import.meta.env.VITE_IMAGE_URL;
 
 const MovieInfo = () => {
   const { id } = useParams();
@@ -15,18 +18,21 @@ const MovieInfo = () => {
     setMovie([data]);
     // console.log(data);
   };
-  console.log(movie);
   useEffect(() => {
     const movieURL = `${moviesURL}/${id}?${apiKey}`;
     getMovie(movieURL);
   }, [id]);
-
   return (
-    <div>
+    <>
       {movie.map((mov) => (
-        <h1 key={mov.id}>{mov.title}</h1>
+        <div key={mov.id}>
+          <MovieBanner mov={mov} />
+          <div className="">
+            <CompaniesCards companies={mov} imageURL={movieImageURL} />
+          </div>
+        </div>
       ))}
-    </div>
+    </>
   );
 };
 

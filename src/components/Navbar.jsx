@@ -11,7 +11,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!search) return;
+    if (!search) return;
 
     navigate(`/search?q=${search}`);
     setSearch("");
@@ -36,7 +36,7 @@ const Navbar = () => {
             />
           </div>
           {menu ? (
-            <div className="lg:flex flex-grow justify-between absolute top-20 left-0 bg-gray-500 w-full items-center py-14 px-8 sm:px-24">
+            <div className="md:hidden flex-grow justify-between absolute top-20 left-0 bg-gray-500 w-full items-center py-14 px-8 sm:px-24">
               <form onSubmit={handleSubmit}>
                 <input
                   type="search"
@@ -45,10 +45,6 @@ const Navbar = () => {
                   className="mb-4 py-2 px-10 rounded-md"
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                <button type="submit">
-                  {" "}
-                  <BiSearchAlt2 />
-                </button>
               </form>
               <div className="flex flex-col">
                 <Link to="/" className="text-white mb-4">
@@ -64,8 +60,8 @@ const Navbar = () => {
           ) : (
             <div className="lg:flex hidden flex-grow justify-between">
               <div>
-                <Link to="/" className="text-white lg:mr-7">
-                  Top Rated Movies
+                <Link to="/genres" className="text-white lg:mr-7">
+                  Genres
                 </Link>
               </div>
               <form onSubmit={handleSubmit}>

@@ -8,6 +8,8 @@ import Home from "./routes/Home";
 import MovieInfo from "./routes/MovieInfo";
 import Search from "./routes/Search";
 import Layout from "./components/Layout";
+import Genres from "./routes/Genres";
+import GenreMovies from "./routes/GenreMovies";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +18,8 @@ const router = createBrowserRouter(
         <Route path="/" element={<Home />}></Route>
         <Route path="/movie/:id" element={<MovieInfo />}></Route>
         <Route path="/search" element={<Search />}></Route>
+        <Route path="/genres" element={<Genres />}></Route>
+        <Route path="genres/:genre" element={<GenreMovies />}></Route>
       </Route>
     </>
   )
@@ -30,4 +34,3 @@ function App() {
 }
 
 export default App;
-

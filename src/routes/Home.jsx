@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MoviesList from "../components/MoviesList";
 import Pagination from "../components/Pagination";
 import GenresButtons from "../components/GenresButtons";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const newMoviesURL = import.meta.env.VITE_NEW_MOVIES_API_URL;
 const genresURL = import.meta.env.VITE_API_GENRES;
@@ -12,7 +13,6 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
-
 
   const getNewMovies = async (url) => {
     try {
@@ -77,7 +77,23 @@ const Home = () => {
         handleSelectedGenres={handleSelectedGenres}
         selectedGenres={selectedGenres}
       />
-      <MoviesList movies={newMovies} />
+      {newMovies.length === 0 ? (
+        <div className="flex items-center justify-center">
+          <MagnifyingGlass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="MagnifyingGlass-loading"
+            wrapperStyle={{}}
+            wrapperClass="MagnifyingGlass-wrapper"
+            glassColor="#c0efff"
+            color="#e15b64"
+          />
+        </div>
+      ) : (
+        <MoviesList movies={newMovies} />
+      )}
+
       <Pagination handlePage={handlePage} page={page} />
     </>
   );
