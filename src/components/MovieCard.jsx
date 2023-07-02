@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
       exit={{ opacity: 0, scale: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="rounded-lg bg-red-300 pb-4 shadow-xl">
+      <div className="rounded-lg bg-lightPurple pb-4 shadow-xl">
         <img
           className="rounded-t-none rounded-b-md"
           src={`${movieImageURL}${movie.poster_path}`}
@@ -23,10 +23,10 @@ const MovieCard = ({ movie }) => {
         <div
           className={`text-center flex flex-col items-center justify-center gap-y-3`}
         >
-          <h2 className="mt-2 font-bold text-xl">{movie.title}</h2>
+          <h2 className="pt-2 font-bold text-xl text-lightPink">{movie.title}</h2>
           <Link
             to={`/movie/${movie.id}`}
-            className="bg-red-400 p-2 rounded-lg hover:bg-red-700 transition-colors duration-200 ease-in"
+            className="bg-lightPink text-boldBlue font-bold p-3 rounded-lg hover:bg-regularOrange transition-colors duration-200 ease-in"
           >
             More info
           </Link>

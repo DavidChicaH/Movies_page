@@ -10,6 +10,9 @@ import Search from "./routes/Search";
 import Layout from "./components/Layout";
 import Genres from "./routes/Genres";
 import GenreMovies from "./routes/GenreMovies";
+import { PageProvider } from "./context/pagesContext";
+import { MoviesProvider } from "./context/moviesContext";
+import { GenresProvider } from "./context/genresContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +31,13 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <MoviesProvider>
+        <GenresProvider>
+          <PageProvider>
+            <RouterProvider router={router} />
+          </PageProvider>
+        </GenresProvider>
+      </MoviesProvider>
     </>
   );
 }

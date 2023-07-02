@@ -27,8 +27,8 @@ const Search = () => {
 
   return (
     <div>
-      <h2>
-        Search results for: <span>{query}</span>
+      <h2 className="text-center text-lightPink mt-10 font-semibold text-5xl md:text-6xl">
+        Search results for: <span className="text-regularOrange font-bold">{query}</span>
       </h2>
       <MoviesList movies={movies} />
     </div>

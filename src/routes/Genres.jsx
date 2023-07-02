@@ -16,21 +16,21 @@ const Genres = () => {
     getGenres();
   }, []);
   return (
-    <>
-      <h2 className="text-center mt-4">Explore the genres</h2>
-      <div className=" h-screen grid grid-cols-1 md:grid-cols-3 container mx-auto gap-y-4">
+    <div className="">
+      <h2 className="text-center text-lightPink mt-4 text-6xl font-bold">Explore all genres</h2>
+      <div className="md:h-screen grid grid-cols-1 md:grid-cols-3 container mx-auto gap-y-4 py-3">
         {genres.map((genre) => (
           <div key={genre.id} className="flex justify-center items-center">
             <Link
               to={`/genres/${genre.id}`}
-              className="text-center text-white bg-slate-600 py-4 px-8 w-4/5"
+              className="text-center font-bold text-lightPink bg-lightPurple hover:bg-regularOrange rounded-lg py-4 px-8 w-4/5"
             >
               {genre.name}
             </Link>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

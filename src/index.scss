@@ -9,15 +9,14 @@
 }
 
 //Navbar classes
-
 .btn {
   @apply text-white py-2.5 px-5 rounded-md transition duration-500 ease-out;
 }
 
 .signin-btn {
-  @apply hover:bg-white hover:text-blue-900 border border-white;
+  @apply hover:bg-lightPink hover:text-boldBlue border border-lightPink;
 }
 
 .signup-btn {
-  @apply bg-blue-500 border border-blue-500  hover:bg-blue-900 hover:border-blue-900 
+  @apply bg-boldBlue border border-boldBlue  hover:bg-lightPink hover:border-lightPink hover:text-boldBlue
 }

@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import MoviesList from "../components/MoviesList";
 import Pagination from "../components/Pagination";
+import pageContext from "../context/pagesContext";
+import genresContext from "../context/genresContext";
 
 const moviesURL = import.meta.env.VITE_NEW_MOVIES_API_URL;
-const apiKey = import.meta.env.VITE_API_KEY;
-const genresURL = import.meta.env.VITE_API_GENRES;
 
 const GenreMovies = () => {
   const { genre } = useParams();
+  const { page, handlePage } = useContext(pageContext);
+  const { getGenres, genreName, getGenreName } = useContext(genresContext);
   const [moviesByGenre, setMoviesByGenre] = useState([]);
-  const [page, setPage] = useState(1);
-  const [getGenreName, setGetGenreName] = useState({});
   const getMoviesByGenre = async () => {
     try {
       const res = await fetch(`${moviesURL}&page=${page}&with_genres=${genre}`);
@@ -23,37 +23,18 @@ const GenreMovies = () => {
     }
   };
 
-  const getGenres = async () => {
-    try {
-      const res = await fetch(`${genresURL}?${apiKey}`);
-      const data = await res.json();
-      const getGenres = data.genres;
-
-      setGetGenreName(getGenres.find((gen) => gen.id === parseInt(genre)));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(getGenreName);
-  const handlePage = (stringAction) => {
-    if (stringAction === "next") {
-      setPage(page + 1);
-    }
-    if (stringAction === "previous" && page > 1) {
-      setPage(page - 1);
-    }
-  };
-
   useEffect(() => {
     getMoviesByGenre();
-    getGenres();
+    getGenres(genre);
+    getGenreName(genre);
   }, [page]);
 
   return (
     <div className="text-center">
+      <h2 className="text-lightPink mt-10 font-semibold text-5xl md:text-6xl">
+        <span className="text-regularOrange font-bold">{genreName.name}</span> Movies
+      </h2>
       <Pagination handlePage={handlePage} page={page} />
-      <h2>Movies with the genre {getGenreName.name}</h2>
       <MoviesList movies={moviesByGenre} />
     </div>
   );

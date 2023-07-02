@@ -23,12 +23,14 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-slate-400 py-6 relative">
+      <nav className="bg-lightPurple py-6 relative">
         <div className="container mx-auto flex px-8 xl:px-0">
           <div className="flex flex-grow items-center">
-            <h1>Logo</h1>
+            <h1 className="font-logo font-bold text-3xl text-lightPink">
+              <Link to="/">MooBees</Link>
+            </h1>
           </div>
-          <div className="flex lg:hidden">
+          <div className="flex text-lightPink lg:hidden">
             <img
               src="/assets/Vector.svg"
               alt="menu-bar"
@@ -36,8 +38,29 @@ const Navbar = () => {
             />
           </div>
           {menu ? (
-            <div className="md:hidden flex-grow justify-between absolute top-20 left-0 bg-gray-500 w-full items-center py-14 px-8 sm:px-24">
-              <form onSubmit={handleSubmit}>
+            <div className="lg:hidden flex-grow justify-between text-center absolute top-20 left-0 bg-lightPurple w-full items-center py-8 px-8 sm:px-24">
+              <div className="flex flex-col justify-center w-full hover:bg-lightPink border p-1.5 gap-y-3 border-lightPink">
+                <Link
+                  onClick={handleToggleMenu}
+                  to="/"
+                  className="text-lightPink hover:text-boldBlue text-2xl lg:mr-7"
+                >
+                  Discover
+                </Link>
+                <hr />
+                <Link
+                  onClick={handleToggleMenu}
+                  to="/genres"
+                  className="text-lightPink hover:text-boldBlue text-2xl lg:mr-7"
+                >
+                  Genres
+                </Link>
+              </div>
+
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col text-center mt-4"
+              >
                 <input
                   type="search"
                   placeholder="Search a movie..."
@@ -45,22 +68,34 @@ const Navbar = () => {
                   className="mb-4 py-2 px-10 rounded-md"
                   onChange={(e) => setSearch(e.target.value)}
                 />
+                <button
+                  onClick={handleToggleMenu}
+                  type="submit"
+                  className="w-1/2 self-center bg-lightPink border-2 text-boldBlue rounded-md text-sm cursor-pointer ml-2 transition duration-500 ease-in-out hover:bg-boldBlue hover:text-lightPink"
+                >
+                  Search
+                </button>
               </form>
-              <div className="flex flex-col">
-                <Link to="/" className="text-white mb-4">
-                  Top Rated Movies
-                </Link>
-              </div>
+              <div className="flex flex-col"></div>
 
-              <div className="flex flex-col text-center">
-                <Link className="btn signin-btn mb-8">Sign In</Link>
-                <Link className="btn signup-btn mb-8">Sign Up</Link>
-              </div>
+              {/* <div className="flex flex-col text-center gap-y-4">
+                <Link className="btn signin-btn ">Sign In</Link>
+                <Link className="btn signup-btn ">Sign Up</Link>
+              </div> */}
             </div>
           ) : (
             <div className="lg:flex hidden flex-grow justify-between">
-              <div>
-                <Link to="/genres" className="text-white lg:mr-7">
+              <div className="flex items-center gap-x-10">
+                <Link
+                  to="/"
+                  className="text-lightPink lg:mr-7 text-2xl hover:underline hover:underline-offset-8"
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/genres"
+                  className="text-lightPink lg:mr-7 text-2xl hover:underline hover:underline-offset-8"
+                >
                   Genres
                 </Link>
               </div>
@@ -74,7 +109,7 @@ const Navbar = () => {
                 />
                 <button
                   type="submit"
-                  className="bg-yellow-300 border-2 rounded-md p-2 text-sm cursor-pointer ml-2 transition duration-500 ease-in-out hover:bg-black hover:text-white"
+                  className="bg-lightPink border-2 rounded-md p-2 text-sm cursor-pointer ml-2 transition duration-500 ease-in-out hover:bg-regularOrange hover:text-lightPink"
                 >
                   <BiSearchAlt2 />
                 </button>
