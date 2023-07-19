@@ -1,7 +1,5 @@
 # My moobees project using TMDB API
 
----
-
 ## How i made this project
 
 For this project, I challenged my skills by using several tools, libraries, and utilities to consume and manipulate data from the TMDB API:
@@ -33,15 +31,15 @@ cd Movies_page
 - Once you have the API key, you need to create a `.env` file in the root of the project and add the following lines:
 
 ```javascript
-VITE_NEW_MOVIES_API_URL = "https://api.themoviedb.org/3/discover/movie";
+VITE_NEW_MOVIES_API_URL="https://api.themoviedb.org/3/discover/movie";
 
-VITE_API_KEY = "Your API key here";
+VITE_API_KEY="Your API key here";
 
-VITE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+VITE_IMAGE_URL="https://image.tmdb.org/t/p/w500";
 
-VITE_API_GENRES = "https://api.themoviedb.org/3/genre/movie/list";
+VITE_API_GENRES="https://api.themoviedb.org/3/genre/movie/list";
 
-VITE_API_SEARCH = "https://api.themoviedb.org/3/search/movie";
+VITE_API_SEARCH="https://api.themoviedb.org/3/search/movie";
 ```
 
 - After you have done the above, you will install all the dependencies needed to run the project.
