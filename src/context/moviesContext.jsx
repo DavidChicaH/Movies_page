@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 const moviesContext = createContext();
 
 const newMoviesURL = import.meta.env.VITE_NEW_MOVIES_API_URL;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 
 const MoviesProvider = ({ children }) => {
@@ -13,7 +14,7 @@ const MoviesProvider = ({ children }) => {
     try {
       const url = newMoviesURL;
       const res = await fetch(
-        `${url}&page=${page}&with_genres=${Object.keys(selectedGenres)
+        `${url}?${apiKey}&page=${page}&with_genres=${Object.keys(selectedGenres)
           .filter((genre) => selectedGenres[genre])
           .join(",")}`
       );
